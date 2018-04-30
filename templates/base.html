@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>chuat - {{title}}</title>
+</head>
+<body>
+	<header>
+		<h1>{{title}}</h1>
+		<h2>{{home}}</h2>
+		<nav>
+		
+
+	{% for href, caption in [('index.html', 'Home'), ('food.html', 'Food'),
+                         ('hobbies.html', 'Hobbies'), ('login.html', 'Login'),] %}
+	    {% if title == caption or caption == home %}
+	      	<a href="{{ href }}">{% filter upper %}{{ caption }}{% endfilter %}</a>
+
+	    {% elif title == "Logged In" %}
+	    	{% if "Login" == caption %}
+	      	<a href="{{ href }}">{% filter upper %}{{ caption }}{% endfilter %}</a>
+	      	{% else %}
+	   		<a href="{{ href }}">{{ caption }}</a>
+	    	{% endif %}
+
+	   	{% elif title == "404 Not Found" %}
+	    	{% if "Home" == caption %}
+	      	<a href="{{ href }}">{% filter upper %}{{ caption }}{% endfilter %}</a>
+	      	{% else %}
+	   		<a href="{{ href }}">{{ caption }}</a>
+	    	{% endif %}
+
+	   	{% else %}
+	   		<a href="{{ href }}">{{ caption }}</a>
+	    {% endif %}
+	{% endfor %}
+	 
+		</nav>
+
+	
+	</header>
+	<br>
+	{% block content %}
+	If you see this, I messed up
+	{% endblock %}
+	<footer>
+		<p>Copyright &copy; I am <a href="http://heyyeyaaeyaaaeyaeyaa.com/" target="_blank">Tricia</a>.</p>
+	</footer>
+	
+</body>
+</html>
+
