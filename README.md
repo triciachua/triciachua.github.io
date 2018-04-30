@@ -1,1 +1,0 @@
-# triciachua.github.io
